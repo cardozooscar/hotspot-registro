@@ -2,22 +2,36 @@
 <html>
 <head>
   <title>Registrando...</title>
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const nome = params.get("nome");
+      const cidade = params.get("cidade");
+      const telefone = params.get("telefone");
+
+      const form = document.createElement("form");
+      form.action = "https://submit-form.com/TqyErUg8P";
+      form.method = "POST";
+      form.target = "hiddenFrame"; // envia sem sair da página
+
+      form.innerHTML = `
+        <input type="hidden" name="Nome" value="${nome}">
+        <input type="hidden" name="Cidade" value="${cidade}">
+        <input type="hidden" name="Telefone" value="${telefone}">
+      `;
+
+      document.body.appendChild(form);
+      form.submit();
+
+      // Aguarda envio e redireciona
+      setTimeout(() => {
+        window.location.href = "https://cardozooscar.github.io/hotspot-registro/sucesso.html";
+      }, 1000);
+    };
+  </script>
 </head>
 <body>
-  <form id="form" action="https://submit-form.com/TqyErUg8P" method="POST">
-    <input type="hidden" name="Nome" id="nome">
-    <input type="hidden" name="Cidade" id="cidade">
-    <input type="hidden" name="Telefone" id="telefone">
-  </form>
-
-  <script>
-    const url = new URL(window.location.href);
-    document.getElementById('nome').value = url.searchParams.get('nome') || '';
-    document.getElementById('cidade').value = url.searchParams.get('cidade') || '';
-    document.getElementById('telefone').value = url.searchParams.get('telefone') || '';
-    document.getElementById('form').submit();
-  </script>
-
-  <p>Conectado com sucesso. Você será redirecionado...</p>
+  <iframe name="hiddenFrame" style="display:none;"></iframe>
+  <p>Registrando seus dados...</p>
 </body>
 </html>
