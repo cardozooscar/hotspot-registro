@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrando...</title>
+    <script>
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const nome = params.get("nome") || "";
+            const cidade = params.get("cidade") || "";
+            const telefone = params.get("telefone") || "";
+
+            const form = document.createElement("form");
+            form.action = "https://submit-form.com/TqyErUg8P";
+            form.method = "POST";
+
+            form.innerHTML = `
+                <input type="hidden" name="Nome" value="${nome}">
+                <input type="hidden" name="Cidade" value="${cidade}">
+                <input type="hidden" name="Telefone" value="${telefone}">
+            `;
+
+            document.body.appendChild(form);
+            form.submit();
+
+            setTimeout(() => {
+                window.location.href = "https://google.com";
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <p>Registrando seus dados...</p>
+</body>
+</html>
